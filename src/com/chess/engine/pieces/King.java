@@ -37,6 +37,7 @@ public class King extends Piece{
 						isEighthColumnExclusion(this.piecePosition, currentCandidateOffset)) {
 					continue;
 				}
+				//bate tca
 				if(!candidateDestinationTile.isTileOccupied()) {
 					/* adding non attacking legal move if the tile is not occupied*/
 					legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
