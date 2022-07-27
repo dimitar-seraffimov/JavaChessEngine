@@ -8,12 +8,16 @@ import com.chess.engine.board.Move;
 
 public abstract class Piece {
 
+	protected final PieceType pieceType;
 	protected final int piecePosition;
 	protected final Alliance pieceAlliance;
 	protected final boolean isFirstMove;
 	
 	
-	Piece(final int piecePosition, final Alliance pieceAlliance){
+	Piece(final PieceType pieceType,
+			final int piecePosition, 
+				final Alliance pieceAlliance){
+		this.pieceType = pieceType;
 		this.pieceAlliance = pieceAlliance;
 		this.piecePosition = piecePosition;
 		//TODO more work here
@@ -32,16 +36,56 @@ public abstract class Piece {
 		return this.isFirstMove;
 	}
 	
+	public PieceType getPieceType() {
+		return this.pieceType;
+	}
+	
 	public abstract Collection<Move> calculateLegalMoves(final Board board);
 	
 	public enum PieceType{
 		
-		PAWN("P"),
-		KNIGHT("N"),
-		BISHOP("B"),
-		ROOK("R"),
-		QUEEN("Q"),
-		KING("K");
+		PAWN("P") {
+			@Override
+			public boolean isKing() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		},
+		KNIGHT("N") {
+			@Override
+			public boolean isKing() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		},
+		BISHOP("B") {
+			@Override
+			public boolean isKing() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		},
+		ROOK("R") {
+			@Override
+			public boolean isKing() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		},
+		QUEEN("Q") {
+			@Override
+			public boolean isKing() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		},
+		KING("K") {
+			@Override
+			public boolean isKing() {
+				// TODO Auto-generated method stub
+				return true;
+			}
+		};
 		
 		private String pieceName;
 		
@@ -53,6 +97,8 @@ public abstract class Piece {
 		public String toString() {
 			return this.pieceName;
 		}
+		
+		public abstract boolean isKing();
 	}
 	
 }
